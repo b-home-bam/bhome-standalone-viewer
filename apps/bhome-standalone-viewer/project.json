@@ -1,0 +1,88 @@
+{
+  "name": "bhome-standalone-viewer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/bhome-standalone-viewer/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/bhome-standalone-viewer",
+        "index": "apps/bhome-standalone-viewer/src/index.html",
+        "browser": "apps/bhome-standalone-viewer/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/bhome-standalone-viewer/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/bhome-standalone-viewer/public"
+          }
+        ],
+        "styles": ["apps/bhome-standalone-viewer/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "bhome-standalone-viewer:build:production"
+        },
+        "development": {
+          "buildTarget": "bhome-standalone-viewer:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "bhome-standalone-viewer:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/bhome-standalone-viewer/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "bhome-standalone-viewer:build",
+        "staticFilePath": "dist/apps/bhome-standalone-viewer/browser",
+        "spa": true
+      }
+    }
+  }
+}
