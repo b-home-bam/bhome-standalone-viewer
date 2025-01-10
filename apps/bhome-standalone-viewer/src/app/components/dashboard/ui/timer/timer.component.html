@@ -1,0 +1,10 @@
+<span
+  class="tw-text-base tw-font-bold tw-text-black"
+  [ngClass]="{
+    'tw-text-black': appearance() === 'dark',
+    'tw-text-white': appearance() === 'light',
+    'tw-text-red': appearance() === 'danger',
+  }"
+  data-testid="timer-text"
+  >{{ formattedTime$ | async }}</span
+>

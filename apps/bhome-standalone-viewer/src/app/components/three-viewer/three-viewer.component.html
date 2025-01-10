@@ -1,0 +1,21 @@
+<div id="three-viewer-root" class="tw-relative tw-h-full tw-w-full">
+  <canvas id="webgl-canvas"></canvas>
+  <div id="css2d-div" style="position: absolute; top: 0px"></div>
+  <div id="css3d-div" style="position: absolute; top: 0px"></div>
+</div>
+<div
+    [hidden]="!viewerConfig()?.camera?.displayCameraProperties"
+    id="camera-properties-div"
+    style="
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 5px;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+    "
+  >
+    Camera Position: (NaN, NaN, NaN) | Rotation: (NaN, NaN, NaN) | Zoom: NaN
+  </div>

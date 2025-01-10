@@ -1,0 +1,21 @@
+<div class="tw-block tw-font-bold">
+  <h1 *ngIf="size === 'xl'" class="tw-text-3xl" data-testid="xl-template">
+    <ng-container [ngTemplateOutlet]="ngContent"></ng-container>
+  </h1>
+  <h1 *ngIf="size === 'lg'" class="tw-text-2xl" data-testid="lg-template">
+    <ng-container [ngTemplateOutlet]="ngContent"></ng-container>
+  </h1>
+  <h2 *ngIf="size === 'base'" class="tw-text-xl" data-testid="base-template">
+    <ng-container [ngTemplateOutlet]="ngContent"></ng-container>
+  </h2>
+  <h3 *ngIf="size === 'sm'" class="tw-text-lg" data-testid="sm-template">
+    <ng-container [ngTemplateOutlet]="ngContent"></ng-container>
+  </h3>
+  <h3 *ngIf="size === 'xs'" class="tw-text-base" data-testid="xs-template">
+    <ng-container [ngTemplateOutlet]="ngContent"></ng-container>
+  </h3>
+</div>
+
+<ng-template #ngContent>
+  <ng-content></ng-content>
+</ng-template>

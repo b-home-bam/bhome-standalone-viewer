@@ -1,0 +1,20 @@
+<div
+  class="tw-flex tw-h-[40px] tw-w-full tw-items-center tw-justify-between tw-rounded-xl tw-bg-green-600 tw-px-10"
+  [ngClass]="{
+    'tw-bg-green-600': !workStationWithStatus()?.failureMode,
+    'tw-bg-red-800': workStationWithStatus()?.failureMode,
+  }"
+>
+  <!-- text and warning triangle-->
+  <div class="tw-flex tw-items-center">
+    <bh-heading [size]="'base'" class="tw-text-white">
+      {{ workStationWithStatus()?.organizationWorkStation?.name }}
+    </bh-heading>
+  </div>
+  <bh-timer
+    [appearance]="'light'"
+    [hidden]="!workStationWithStatus()?.checkedInElement"
+    #timer
+    [startOnInit]="false"
+  ></bh-timer>
+</div>
